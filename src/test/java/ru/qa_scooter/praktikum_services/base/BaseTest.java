@@ -1,20 +1,24 @@
 package ru.qa_scooter.praktikum_services.base;
 
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
-    private WebDriver driver;
+    protected WebDriver driver;
+    protected static final String URL = "https://qa-scooter.praktikum-services.ru/";
 
+    @Before
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.get(URL);
+    }
 
-
-    public WebDriver setBrowser(String browser) {
-        if (browser == "chrome") {
-            this.driver = new ChromeDriver();
-        } else if (browser == "firefox") {
-            this.driver = new FirefoxDriver();
+    @After
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
         }
-        return driver;
     }
 }

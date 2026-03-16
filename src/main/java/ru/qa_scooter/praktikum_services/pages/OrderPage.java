@@ -67,5 +67,18 @@ public class OrderPage {
         new WebDriverWait(driver, Duration.ofSeconds(6))
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmButton));
     }
-
+    public void fillRenterInfo(String firstName, String secondName, String address, String subway, String phoneNumber) {
+        setFirstName(firstName);
+        setSecondName(secondName);
+        setAddress(address);
+        setSubway(subway);
+        setPhoneNumber(phoneNumber);
+        clickNextButton();
+    }
+    public void fillRentalInfo(String dateOrder, String days) {
+        waitDateField();
+        setDateOrder(dateOrder);
+        setRentalPeriod(days);
+        clickOrderButton();
+    }
 }
